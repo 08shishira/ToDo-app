@@ -6,6 +6,7 @@ from . forms import *
 
 
 def index(request):
+	"""Creating the todo task"""
 	tasks = Task.objects.all()
 
 	form = TaskForm()
@@ -20,6 +21,7 @@ def index(request):
 	return render(request, 'tasks/list.html', context)
 
 def updateTask(request, pk):
+	"""Updating the todo task"""
 	task = Task.objects.get(id=pk)
 
 	form = TaskForm(instance=task)
@@ -34,6 +36,7 @@ def updateTask(request, pk):
 	return render(request, 'tasks/update_task.html', context)
 
 def deleteTask(request, pk):
+	"""Deleting the todo task"""
 	item = Task.objects.get(id=pk)
 
 	if request.method == 'POST':
